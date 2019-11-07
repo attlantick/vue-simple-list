@@ -8,12 +8,15 @@ class ItemCollection {
     }
 
     add(text: string): void {
-        console.log('add');
         this.items.push({text: text})
     }
 
+    change(index:number, text: string): void {
+        console.log(index,text);
+        this.items[index].text = text;
+    }
+
     del(index: number):void {
-        console.log('del');
         this.items.splice(index,1)
     }
 

@@ -5,7 +5,7 @@
       >
         <b-form-input
                 v-on:keyup.13="$emit('change',index,model.text)"
-                v-on:keyup.8="model.text ?'': $emit('del')"
+                v-on:keyup.8="model.text ? '' : $emit('del')"
                 :disabled="disable"
                 v-model="model.text"
         ></b-form-input>
@@ -41,7 +41,7 @@
     }
 
     @Watch('item.text')
-    onPropertyChanged(value: string, oldValue: Item) {
+    onPropertyChanged(value: string) {
       this.model.text = value
     }
   }

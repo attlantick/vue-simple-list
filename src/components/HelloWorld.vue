@@ -17,7 +17,7 @@
                           :disable="!editMode"
                           :index="index"
                           :key="index" :item="item"/>
-              <new-item @add="add" :key="'add'"/>
+              <new-item v-if="editMode" @add="add" :key="'add'"/>
             </b-form>
           </b-card-body>
         </b-card>

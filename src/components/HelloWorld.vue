@@ -17,7 +17,7 @@
                           :disable="!editMode"
                           :index="index"
                           :key="index" :item="item"/>
-              <new-item v-if="editMode" @add="add" :key="'add'"/>
+              <list-item v-if="editMode" @add="add" :key="'add'"/>
             </b-form>
           </b-card-body>
         </b-card>
@@ -31,10 +31,9 @@
   import {Component, Vue} from 'vue-property-decorator';
   import ListItem from "@/components/ListItem.vue";
   import ItemCollection from "@/resources/ItemCollection";
-  import NewItem from "@/components/NewItem.vue";
 
   @Component({
-    components: {NewItem, ListItem}
+    components: {ListItem}
   })
 
   export default class HelloWorld extends Vue {

@@ -4,7 +4,7 @@
               :description="description"
       >
         <b-form-input
-                v-on:keyup.13="$emit('change',index,model.text)"
+                v-on:keyup.13="index!==undefined ? $emit('change',index,model.text) : $emit('add',model.text)"
                 v-on:keyup.8="model.text ? '' : $emit('del')"
                 :disabled="disable"
                 v-model="model.text"
@@ -33,11 +33,14 @@
       if (this.item)
         this.model = {...this.item}
     }
+
     get description() {
-      return this.disable? '':
-        this.model.text === this.item.text
-          ? ''
-          : 'For save press Enter button';
+        if (this.item&&(this.model.text !== this.item.text))
+          return this.disable? '' : 'For save press Enter button';
+        if (!this.item&&this.model.text)
+            return 'For save press Enter button';
+        return ''
+
     }
 
     @Watch('item.text')
